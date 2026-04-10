@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aram Ansary Ogholbake</title>
+  <meta name="description" content="Personal academic website of Aram Ansary Ogholbake, PhD researcher in AI, biomedical data science, medical imaging, and bioinformatics." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #0f1630;
+      --text: #e8ecf8;
+      --muted: #aab3cf;
+      --line: rgba(255,255,255,0.08);
+      --accent: #75d7ff;
+      --accent-2: #9b8cff;
+      --tag: #1a2447;
+      --shadow: 0 20px 60px rgba(0,0,0,0.28);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(117,215,255,0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(155,140,255,0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 28px;
+      padding: 28px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: #222;
+      display: block;
+    }
+
+    .name {
+      margin: 18px 0 6px;
+      font-size: 2rem;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .role {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 6px 0;
+    }
+
+    .nav {
+      margin: 22px 0 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .nav a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid transparent;
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.18s ease;
+    }
+
+    .nav a:hover {
+      border-color: rgba(117,215,255,0.28);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
+
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social a, .cv-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.18s ease;
+    }
+
+    .social a:hover, .cv-btn:hover {
+      background: rgba(117,215,255,0.12);
+      border-color: rgba(117,215,255,0.28);
+      text-decoration: none;
+    }
+
+    .cv-btn {
+      display: inline-block;
+      margin-top: 14px;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(90deg, var(--accent), #8ee8ff);
+      color: #0d1224;
+      font-weight: 700;
+      border: none;
+    }
+
+    .main {
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero, .section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(117,215,255,0.12);
+      color: var(--accent);
+      font-size: 0.83rem;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin: 18px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .mini-title {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .mini-card p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .section h3 {
+      margin: 0 0 18px;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--tag);
+      color: #d7ddf3;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .stats {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+
+    .stat-num {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+      color: white;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .pub-list, .news-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .pub, .news-item {
+      display: grid;
+      gap: 8px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+
+    .pub-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+    }
+
+    .pub-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.35;
+    }
+
+    .year {
+      flex-shrink: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(155,140,255,0.14);
+      color: #cbc2ff;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .pub-authors, .pub-venue, .news-item p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .pub-links a {
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+
+    .contact-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      color: white;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 10px 0 30px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: relative;
+        top: 0;
+      }
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell { padding: 16px; }
+      .sidebar, .hero, .section { padding: 22px; border-radius: 22px; }
+      .pub-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <img class="photo" src="profile.jpg" alt="Portrait of Aram Ansary Ogholbake" />
+      <h1 class="name">Aram Ansary Ogholbake</h1>
+      <div class="role">PhD Researcher in AI, Biomedical Data Science, Medical Imaging, and Bioinformatics</div>
+      <div class="meta">University of Kentucky</div>
+      <div class="meta">Lexington, Kentucky, USA</div>
+      <div class="meta"><a href="mailto:aram.ansary@uky.edu">aram.ansary@uky.edu</a></div>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Research Focus</a>
+        <a href="#news">Recent Updates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/aram-a-055023180/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/aramansary" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=LkCNvh8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar</a>
+      </div>
+
+      <a class="cv-btn" href="Aram_Ansary_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <span class="eyebrow">Personal Website</span>
+        <h2>Building interpretable AI for biomedicine.</h2>
+        <p>
+          I develop deep learning methods for biomedical data, medical imaging, and omics analysis, with a focus on models that are accurate, interpretable, and clinically meaningful.
+        </p>
+
+        <div class="hero-grid">
+          <div class="mini-card">
+            <div class="mini-title">Current direction</div>
+            <p>Multimodal learning for brain edema detection, interpretable gene-expression models for cancer detection, and AI methods for biomedical and scientific data.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">Research style</div>
+            <p>Interdisciplinary, method-driven, and application-grounded, combining deep learning, bioinformatics, medical imaging, and computational biology.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h3>About</h3>
+        <div class="about-grid">
+          <div>
+            <p>
+              I am a PhD candidate at the University of Kentucky working at the intersection of artificial intelligence, biomedical data science, medical imaging, and bioinformatics.
+            </p>
+            <p>
+              My work centers on developing interpretable and clinically relevant deep learning methods for complex biomedical problems, including multimodal imaging analysis, gene expression modeling, omics-based disease detection, and computational biology.
+            </p>
+            <p>
+              I am especially interested in methods that go beyond raw predictive performance and offer clarity, scientific insight, and practical value in real biomedical settings.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Medical Imaging</span>
+              <span class="tag">Bioinformatics</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Interpretable AI</span>
+              <span class="tag">Multimodal Learning</span>
+              <span class="tag">Omics Data Analysis</span>
+              <span class="tag">Computational Biology</span>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-num">7+</div>
+              <div class="stat-label">Research publications and preprints visible on Google Scholar</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">AI × Biomedicine</div>
+              <div class="stat-label">Core focus spanning biomedical data, imaging, and biological interpretation</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">Interpretable</div>
+              <div class="stat-label">Models designed for both predictive accuracy and scientific meaning</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="publications">
+        <h3>Selected Publications</h3>
+        <div class="pub-list">
+          <article class="pub">
+            <div class="pub-top">
+              <div class="pub-title">A Multimodal Deep Learning Framework for Edema Classification Using HCT and Clinical Data</div>
+              <div class="year">2026</div>
+            </div>
+            <p class="pub-authors">A Ansary Ogholbake, H Choi, S Brandenburg, A Antuna, Z Al-Sharshahi, M Cox, and collaborators</p>
+            <p class="pub-venue">arXiv preprint</p>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2603.26726" target="_blank" rel="noopener noreferrer">Link</a>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-top">
+              <div class="pub-title">Five-Gene Expression Formula Accurately Detects Hepatocellular Carcinoma Tumors</div>
+              <div class="year">2025</div>
+            </div>
+            <p class="pub-authors">A Ansary Ogholbake, Q Cheng</p>
+            <p class="pub-venue">Biotechnology Journal</p>
+            <div class="pub-links">
+              <a href="https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/biot.70073" target="_blank" rel="noopener noreferrer">Link</a>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-top">
+              <div class="pub-title">PROTECT: Protein circadian time prediction using unsupervised learning</div>
+              <div class="year">2025</div>
+            </div>
+            <p class="pub-authors">A Ansary Ogholbake, Q Cheng</p>
+            <p class="pub-venue">iScience</p>
+            <div class="pub-links">
+              <a href="https://www.sciencedirect.com/science/article/pii/S2589004225018668" target="_blank" rel="noopener noreferrer">Link</a>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-top">
+              <div class="pub-title">Gene expression clock: an unsupervised deep learning approach for predicting circadian rhythmicity from whole genome expression</div>
+              <div class="year">2024</div>
+            </div>
+            <p class="pub-authors">A Ansary Ogholbake, Q Cheng</p>
+            <p class="pub-venue">Neural Computing and Applications</p>
+            <div class="pub-links">
+              <a href="https://link.springer.com/article/10.1007/s00521-024-10316-w" target="_blank" rel="noopener noreferrer">Link</a>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-top">
+              <div class="pub-title">PENN: Phase Estimation Neural Network on Gene Expression Data</div>
+              <div class="year">2023</div>
+            </div>
+            <p class="pub-authors">A Ansary Ogholbake, Q Cheng</p>
+            <p class="pub-venue">The International Conference on Deep Learning, Big Data and Blockchain</p>
+            <div class="pub-links">
+              <a href="https://scholar.google.com/citations?user=LkCNvh8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Link</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h3>Research Focus</h3>
+        <div class="news-list">
+          <article class="news-item">
+            <div class="pub-title">Medical imaging and multimodal fusion</div>
+            <p>Developing AI methods that combine imaging with structured clinical information for robust and clinically relevant prediction.</p>
+          </article>
+          <article class="news-item">
+            <div class="pub-title">Interpretable cancer detection from omics data</div>
+            <p>Designing transparent models and compact predictive formulas using gene expression data across bulk and single-cell settings.</p>
+          </article>
+          <article class="news-item">
+            <div class="pub-title">Circadian biology and computational analysis</div>
+            <p>Building deep learning methods for circadian phase prediction and biological rhythm analysis using transcriptomic and proteomic data.</p>
+          </article>
+        </div>
+      </section>        
+
+      <section class="section" id="contact">
+        <h3>Contact</h3>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:aram.ansary@uky.edu">aram.ansary@uky.edu</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">Google Scholar</div>
+            <div class="contact-value"><a href="https://scholar.google.com/citations?user=LkCNvh8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">View profile</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">CV</div>
+            <div class="contact-value"><a href="Aram_Ansary_CV.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © 2026 Aram Ansary Ogholbake
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
